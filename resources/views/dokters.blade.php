@@ -79,9 +79,9 @@
                             <button class="p-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100">
                                 <i class="fas fa-calendar-alt"></i>
                             </button>
-                            <button class="p-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100">
+                            <a href="{{ route('chat.index') }}" class="p-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100">
                                 <i class="fas fa-envelope"></i>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

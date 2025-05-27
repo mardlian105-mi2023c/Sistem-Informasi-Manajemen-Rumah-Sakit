@@ -7,26 +7,33 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\RawatInapController;
 use App\Http\Controllers\JadwalController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
-Route::resource('comments', CommentController::class);
-Route::get('/', [CommentController::class, 'index'])->name('home');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::post('/admin', [AdminController::class, 'store'])->name('chat.store');
+});
+
+
+Route::get('/', [HomeController::class, 'index']);
+
+Route::post('/testimoni', [TestimoniController::class, 'store'])->middleware('auth')->name('testimoni.store');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
+});
 
 Route::get('/jadwalDokter', [JadwalController::class, 'index'])->name('jadwalDokter');
-
-Route::get('/', function () {
-    return view('home');
-});
 
 Route::get('/about', function () {
     return view('about');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin');
-    })->name('admin');
-});
+
 Route::get('/pasiens', [PasienController::class, 'pasien'])->name('pasien');
 Route::get('/about', [DokterController::class, 'about'])->name('about');
 Route::get('/jadwal', [JadwalDokterController::class, 'jadwal'])->name('jadwal');
