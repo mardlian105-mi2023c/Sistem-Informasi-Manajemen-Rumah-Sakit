@@ -41,6 +41,6 @@ class ChatController extends Controller
             'message' => $request->message,
         ]);
 
-        return redirect()->route('admin', ['user' => $request->receiver_id]);
+        return redirect()->route('chat.index', ['user' => $request->receiver_id]);
     }
 }
