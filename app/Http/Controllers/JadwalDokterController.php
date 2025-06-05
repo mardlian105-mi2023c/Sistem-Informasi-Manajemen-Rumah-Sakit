@@ -40,10 +40,11 @@ class JadwalDokterController extends Controller
         return redirect()->route('jadwal.index')->with('success', 'Jadwal dokter berhasil ditambahkan.');
     }
 
-    public function edit(JadwalDokter $jadwal_dokter)
+    public function edit($id)
     {
+        $jadwal_dokter = JadwalDokter::findOrFail($id);
         $dokter = Dokter::all();
-        return view('admin.jadwal.edit', compact('jadwal', 'dokter'));
+        return view('admin.jadwal.edit', compact('jadwal_dokter', 'dokter'));
     }
 
     public function update(Request $request, JadwalDokter $jadwal_dokter)

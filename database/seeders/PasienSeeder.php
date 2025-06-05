@@ -15,7 +15,7 @@ class PasienSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i = 1; $i <= 25; $i++) {
+        for ($i = 1; $i <= 40; $i++) {
             Pasien::create([
                 'nama' => $faker->name,
                 'no_rm' => 'RM' . str_pad($i, 3, '0', STR_PAD_LEFT),

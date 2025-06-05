@@ -62,7 +62,7 @@
         <div class="flex h-screen bg-gray-100">
             <!-- Sidebar Kontak -->
             <div class="w-1/3 bg-white p-6 border-r shadow-md overflow-y-auto">
-                <h2 class="text-2xl font-bold mb-6 text-gray-800">📇 Pesan Masuk</h2>
+                <h2 class="text-2xl font-bold mb-6 text-gray-800">Pesan Masuk</h2>
         
                 @foreach($users as $user)
                     <a href="{{ route('admin', ['user' => $user->id]) }}"

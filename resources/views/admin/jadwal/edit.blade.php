@@ -3,9 +3,9 @@
 @section('content')
 <div class="max-w-3xl mx-auto p-4">
     <h1 class="text-xl font-bold mb-4">Edit Jadwal Dokter</h1>
-    
+
     @if ($errors->any())
-        <div class="bg-red-100 text-red-800 p-2 mb-4">
+        <div class="bg-red-100 text-red-800 p-2 mb-4 rounded">
             <ul class="list-disc pl-5">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -21,9 +21,9 @@
         <div>
             <label class="block font-semibold mb-1">Dokter</label>
             <select name="dokter_id" class="w-full border p-2 rounded">
-                @foreach($dokter as $dokter)
-                    <option value="{{ $dokter->id }}" {{ $jadwal_dokter->dokter_id == $dokter->id ? 'selected' : '' }}>
-                        {{ $dokter->nama }}
+                @foreach($dokter as $d)
+                    <option value="{{ $d->id }}" {{ $jadwal_dokter->dokter_id == $d->id ? 'selected' : '' }}>
+                        {{ $d->nama }}
                     </option>
                 @endforeach
             </select>

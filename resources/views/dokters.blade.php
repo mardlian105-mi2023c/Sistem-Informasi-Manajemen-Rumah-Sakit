@@ -12,41 +12,34 @@
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div class="w-full md:w-auto">
-                <div class="relative rounded-md shadow-sm">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i class="fas fa-search text-gray-400"></i>
+        <form method="GET" action="{{ route('dokters') }}">
+            <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <!-- Search -->
+                <div class="w-full md:w-auto">
+                    <div class="relative rounded-md shadow-sm">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </div>
+                        <input
+                            type="text"
+                            name="search"
+                            value="{{ request('search') }}"
+                            class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="Cari dokter..."
+                        >
                     </div>
-                    <input
-                        type="text"
-                        id="searchInput"
-                        class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                        placeholder="Cari dokter..."
-                    >
                 </div>
-            </div>
-            <div class="flex space-x-2 w-full md:w-auto">
-                <select
-                    id="spesialisasiSelect"
-                    class="block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-                >
-                    <option value="">Semua Spesialisasi</option>
-                    <option value="Umum">Umum</option>
-                    <option value="Jantung">Jantung</option>
-                    <option value="Anak">Anak</option>
-                    <option value="Bedah">Bedah</option>
-                    <option value="Kandungan">Kandungan</option>
+        
+                <select name="spesialis" onchange="this.form.submit()" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                    <option value="">Semua Spesialis</option>
+                    @foreach($spesialisasi as $spesialis)
+                        <option value="{{ $spesialis }}" {{ request('spesialis') == $spesialis ? 'selected' : '' }}>
+                            {{ $spesialis }}
+                        </option>
+                    @endforeach
                 </select>
-                <button
-                    id="filterBtn"
-                    type="button"
-                    class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                    Filter
-                </button>
             </div>
-        </div>        
+        </form>             
         
         <!-- Doctors Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

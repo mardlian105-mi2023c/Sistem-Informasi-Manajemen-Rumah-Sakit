@@ -19,21 +19,22 @@ class DokterController extends Controller
         return view('about', compact('dokter'));
     }
 
-    public function dokters()
+    public function dokters(Request $request)
     {
-        $dokter = Dokter::orderBy('nama')->paginate(20);
-        return view('dokters', compact('dokter'));
         $query = Dokter::query();
 
-        // Search by name
         if ($request->filled('search')) {
             $query->where('nama', 'like', '%' . $request->search . '%');
         }
-    
-        // Filter by spesialisasi
+
         if ($request->filled('spesialis')) {
-            $query->where('spesialis', $request->spesialisasi);
+            $query->where('spesialis', $request->spesialis);
         }
+
+        $dokter = $query->orderBy('nama')->paginate(20);
+        $spesialisasi = Dokter::select('spesialis')->distinct()->pluck('spesialis');
+
+        return view('dokters', compact('dokter', 'spesialisasi'));
     }
 
     public function create()
@@ -45,11 +46,15 @@ class DokterController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'spesialisasi' => 'required',
-            'telepon' => 'required',
+            'spesialis' => 'required',
+            'no_telepon' => 'required',
         ]);
 
-        Dokter::create($request->all());
+        Dokter::create([
+            'nama' => $request->nama,
+            'spesialis' => $request->spesialis,
+            'no_telepon' => $request->no_telepon,
+        ]);
 
         return redirect()->route('dokter.index')->with('success', 'Data dokter berhasil ditambahkan.');
     }
@@ -63,11 +68,15 @@ class DokterController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'spesialisasi' => 'required',
-            'telepon' => 'required',
+            'spesialis' => 'required',
+            'no_telepon' => 'required',
         ]);
 
-        $dokter->update($request->all());
+        $dokter->update([
+            'nama' => $request->nama,
+            'spesialis' => $request->spesialis,
+            'no_telepon' => $request->no_telepon,
+        ]);
 
         return redirect()->route('dokter.index')->with('success', 'Data dokter berhasil diperbarui.');
     }

@@ -44,6 +44,7 @@ Route::resource('dokter', DokterController::class);
 Route::resource('pasien', PasienController::class);
 Route::resource('rawatinap', RawatInapController::class);
 Route::resource('jadwal', JadwalDokterController::class);
+Route::put('/jadwal/{jadwal}', [JadwalDokterController::class, 'update'])->name('jadwal.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -117,7 +117,7 @@
                             Lihat Jadwal <i class="fas fa-arrow-right ml-1"></i>
                         </a>
                         <div class="flex space-x-2">
-                            <button class="p-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100">
+                            <a href="{{ route('jadwalDokter') }}" class="p-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100">
                                 <i class="fas fa-calendar-alt"></i>
                             </button>
                             <a href="{{ route('chat.index') }}" class="p-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100">
@@ -138,10 +138,10 @@
             Hubungi kami sekarang untuk informasi lebih lanjut atau buat janji temu dengan dokter spesialis kami.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#" class="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition duration-300">
+            <a href="{{ route('chat.index') }}" class="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition duration-300">
                 <i class="fas fa-phone-alt mr-2"></i> Hubungi Kami
             </a>
-            <a href="#" class="px-6 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300">
+            <a href="{{ route('chat.index') }}" class="px-6 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300">
                 <i class="fas fa-calendar-alt mr-2"></i> Buat Janji
             </a>
         </div>

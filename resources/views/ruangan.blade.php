@@ -20,7 +20,7 @@
             <div>
                 <label for="kamar" class="block text-sm font-medium text-gray-700 mb-1">Kamar</label>
                 <select id="kamar" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">Semua Kamar</option>
+                    <option value="">Semua Ruangan</option>
                     @foreach($kamar as $kamar)
                         <option value="{{ $kamar }}">{{ $kamar }}</option>
                     @endforeach
@@ -67,11 +67,7 @@
                             {{ $rawat->tanggal_keluar ? \Carbon\Carbon::parse($rawat->tanggal_keluar)->format('d/m/Y') : '-' }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            @if($rawat->tanggal_keluar)
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Selesai</span>
-                            @else
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Dirawat</span>
-                            @endif
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $rawat->status }}</span>
                         </td>
                     </tr>
                     @empty

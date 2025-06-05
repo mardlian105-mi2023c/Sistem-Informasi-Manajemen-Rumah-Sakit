@@ -13,7 +13,12 @@ class Dokter extends Model
 
     protected $fillable = [
         'nama',
-        'spesialisasi',
-        'telepon',
+        'spesialis',
+        'no_telepon',
     ];
+
+    public function jadwalDokters()
+    {
+        return $this->hasMany(JadwalDokter::class);
+    }
 }

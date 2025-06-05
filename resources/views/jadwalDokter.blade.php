@@ -46,7 +46,6 @@
             </form>
         </div>
 
-        <!-- Day Tabs -->
         <div class="flex overflow-x-auto pb-2 mb-6 scrollbar-hide">
             <div class="flex space-x-2">
                 @foreach(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'] as $day)
@@ -60,7 +59,6 @@
             </div>
         </div>
 
-        <!-- Schedules Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($jadwals as $jadwal)
             <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
@@ -81,7 +79,7 @@
                     </div>
                     
                     <div class="mt-6 flex justify-between items-center">
-                        <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-800">
+                        <a href="{{ route('chat.index') }}" class="text-sm font-medium text-blue-600 hover:text-blue-800">
                             Buat Janji <i class="fas fa-arrow-right ml-1"></i>
                         </a>
                         <div class="flex space-x-2">

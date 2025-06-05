@@ -16,7 +16,6 @@ class RawatInapController extends Controller
 
     public function ruangan(Request $request)
     {
-        // Query dasar dengan eager loading
         $query = RawatInap::with('pasien')
             ->orderBy('tanggal_masuk', 'desc');
 

@@ -9,7 +9,6 @@
                 </a>
             </div>
 
-            <!-- Desktop Navigation -->
             <div class="hidden md:ml-10 md:flex md:items-center md:space-x-6">
                 <a href="{{ route('about') }}" class="text-gray-600 hover:text-blue-500 px-3 py-2 text-sm font-medium transition-colors duration-200">Tentang Kami</a>
                 <a href="{{ route('jadwalDokter') }}" class="text-gray-600 hover:text-blue-500 px-3 py-2 text-sm font-medium transition-colors duration-200">Jadwal Praktek</a>
@@ -17,12 +16,10 @@
                 <a href="{{ route('ruangan') }}" class="text-gray-600 hover:text-blue-500 px-3 py-2 text-sm font-medium transition-colors duration-200">Rawat Inap</a>
                 <a href="{{ route('pasien') }}" class="bg-blue-50 text-blue-600 hover:bg-blue-100 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 border border-blue-100">Data Pasien</a>
                 
-                <!-- Authentication Links -->
                 @guest
                     <a href="{{ route('login') }}" class="text-gray-600 hover:text-blue-500 px-3 py-2 text-sm font-medium">Login</a>
                     <a href="{{ route('register') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm transition-all duration-200">Register</a>
                 @else
-                    <!-- User Dropdown -->
                     <div class="relative ml-3">
                         <button type="button" class="flex items-center text-sm rounded-full focus:outline-none" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                             <span class="sr-only">Open user menu</span>
@@ -33,14 +30,11 @@
                             <i class="fas fa-chevron-down ml-1 text-gray-500 text-xs"></i>
                         </button>
                         
-                        <!-- Dropdown Menu -->
                         <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
-                            <a href="{{ Auth::user()->role === 'admin' ? route('admin') : route('admin') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Dashboard</a>
-                            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Profil Saya</a>
                             @if(Auth::user()->role === 'admin')
-                                <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Pengaturan</a>
-                                <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Kelola User</a>
+                                <a href="{{ Auth::user()->role === 'admin' ? route('admin') : route('admin') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Dashboard</a>
                             @endif
+                            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Profil Saya</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Logout</button>
@@ -50,7 +44,6 @@
                 @endguest
             </div>
 
-            <!-- Mobile menu button -->
             <div class="md:hidden flex items-center">
                 @guest
                     <a href="{{ route('login') }}" class="text-gray-600 px-3 py-2 text-sm font-medium mr-2">Login</a>
@@ -69,7 +62,6 @@
         </div>
     </div>
 
-    <!-- Mobile menu -->
     <div class="md:hidden hidden" id="mobile-menu">
         <div class="pt-2 pb-3 space-y-1 px-2">
             <a href="{{ route('about') }}" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-blue-500 hover:bg-gray-50">Tentang Kami</a>

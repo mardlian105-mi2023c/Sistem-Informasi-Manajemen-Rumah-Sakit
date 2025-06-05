@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
+    <div class="flex items-center justify-center h-screen">
         <div class="w-full max-w-md px-6 py-12 bg-white rounded-2xl shadow-xl">
             <!-- Header with Logo -->
             <div class="text-center mb-8">

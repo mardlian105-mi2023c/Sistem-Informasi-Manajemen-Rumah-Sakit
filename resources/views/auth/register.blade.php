@@ -1,9 +1,9 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50 p-4">
+    <div class="flex items-center justify-center h-screen">
         <div class="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
             <div class="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 text-center">
-                <h2 class="text-3xl font-bold text-white">Create Your Account</h2>
-                <p class="text-indigo-100 mt-2">Join our community today</p>
+                <h2 class="text-3xl font-bold text-white">Buat Akun</h2>
+                <p class="text-indigo-100 mt-2">Rumah Sakit Sehat Medika</p>
             </div>
             
             <form method="POST" action="{{ route('register') }}" class="p-8 space-y-6">
